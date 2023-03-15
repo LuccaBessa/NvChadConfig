@@ -9,7 +9,9 @@ M.treesitter = {
         "javascript",
         "go",
         "rust",
-        "python"
+        "python",
+        "markdown",
+        "markdown_inline",
     },
 }
 

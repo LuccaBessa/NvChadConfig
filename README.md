@@ -1,2 +1,2 @@
-# NvChadConfig
+# NvChad Config
  

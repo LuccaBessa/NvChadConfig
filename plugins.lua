@@ -1,9 +1,16 @@
-local overrides = require "custom.plugins.overrides"
+local overrides = require("custom.configs.overrides")
 
----@type {[PluginName]: NvPluginConfig|false}
-
+---@type NvPluginSpec[]
 local plugins = {
     ["neovim/nvim-lspconfig"] = {
+        dependencies = {
+            {
+              "jose-elias-alvarez/null-ls.nvim",
+              config = function()
+                require "custom.configs.null-ls"
+              end,
+            },
+        },
         config = function()
             require "plugins.configs.lspconfig"
             require "custom.plugins.lspconfig"
@@ -18,13 +25,8 @@ local plugins = {
     ["nvim-tree/nvim-tree.lua"] = {
         override_options = overrides.nvimtree,
     },
-    ["jose-elias-alvarez/null-ls.nvim"] = {
-        after = "nvim-lspconfig",
-        config = function()
-            require "custom.plugins.null-ls"
-        end,
-    },
-    -- add pluging
+    -- Install pluging
+
     -- ["max397574/better-escape.nvim"] = {
     --     event = "InsertEnter",
     --     config = function()
